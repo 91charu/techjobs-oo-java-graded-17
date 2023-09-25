@@ -12,11 +12,12 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
     public Job() {
-        this.id = nextId;
+        id = nextId;
         nextId++;
     }
 
@@ -30,19 +31,6 @@ public class Job {
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Job job)) return false;
-        return getId() == job.getId();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -90,4 +78,33 @@ public class Job {
     public int getId() {
         return id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Job job)) return false;
+        return getId() == job.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+
+        output.append(System.lineSeparator());
+        output.append("ID: ").append(getId()).append(System.lineSeparator());
+        output.append("Name: ").append(name.isEmpty() ? "Data not available" :name).append(System.lineSeparator());
+        output.append("Employer: ").append(employer.getValue().isEmpty() ? "Data not available" :employer).append(System.lineSeparator());
+        output.append("Location: ").append(location.getValue().isEmpty() ? "Data not available" :location).append(System.lineSeparator());
+        output.append("Position Type: ").append(positionType.getValue().isEmpty() ? "Data not available" :positionType).append(System.lineSeparator());
+        output.append("Core Competency: ").append(coreCompetency.getValue().isEmpty() ? "Data not available" :coreCompetency).append(System.lineSeparator());
+        //output.append(System.lineSeparator());
+        return output.toString();
+    }
+
+
 }
