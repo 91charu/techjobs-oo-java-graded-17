@@ -1,31 +1,31 @@
 package org.launchcode.techjobs.oo;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
+
 public class JobTest {
     //TODO: Create your unit tests here
 @Test
         public void testSettingJobId() {
             Job job1 = new Job();
             Job job2 = new Job();
-            Assert.assertNotEquals(job1.getId(), job2.getId());
+            assertNotEquals(job1.getId(), job2.getId());
         }
-
         @Test
         public void testJobConstructorSetsAllFields() {
 
             Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                     new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-            Assert.assertEquals("Product tester", job.getName());
-            Assert.assertTrue(job.getEmployer() instanceof Employer);
-            Assert.assertTrue(job.getLocation() instanceof Location);
-            Assert.assertTrue(job.getPositionType() instanceof PositionType);
-            Assert.assertTrue(job.getCoreCompetency() instanceof CoreCompetency);
+            assertEquals("Product tester", job.getName());
+            assertTrue(job.getEmployer() instanceof Employer);
+            assertTrue(job.getLocation() instanceof Location);
+            assertTrue(job.getPositionType() instanceof PositionType);
+            assertTrue(job.getCoreCompetency() instanceof CoreCompetency);
 
-            Assert.assertEquals("ACME", job.getEmployer().getValue());
-            Assert.assertEquals("Desert", job.getLocation().getValue());
-            Assert.assertEquals("Quality control", job.getPositionType().getValue());
-            Assert.assertEquals("Persistence", job.getCoreCompetency().getValue());
+            assertEquals("ACME", job.getEmployer().getValue());
+            assertEquals("Desert", job.getLocation().getValue());
+            assertEquals("Quality control", job.getPositionType().getValue());
+            assertEquals("Persistence", job.getCoreCompetency().getValue());
         }
 
         @Test
@@ -35,7 +35,7 @@ public class JobTest {
                     new PositionType("Quality control"), new CoreCompetency("Persistence"));
             Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                     new PositionType("Quality control"), new CoreCompetency("Persistence"));
-            Assert.assertFalse(job1.equals(job2));
+            assertFalse(job1.equals(job2));
         }
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
@@ -48,7 +48,7 @@ public class JobTest {
                 "%nID: %d%nName: Product tester%nEmployer: ACME%nLocation: Desert%nPosition Type: Quality control%nCore Competency: Persistence%n",
                 job.getId());
 
-        Assert.assertEquals(expectedOutput, jobToString);
+        assertEquals(expectedOutput, jobToString);
     }
 
 
@@ -71,7 +71,7 @@ public class JobTest {
         // System.out.println("Actual length: " + jobString.length());
 
 
-        Assert.assertEquals(expectedString, jobString);
+        assertEquals(expectedString, jobString);
     }
 
     @Test
@@ -85,6 +85,6 @@ public class JobTest {
                 "Location: StL%n" +
                 "Position Type: Data not available%n" +
                 "Core Competency: Java");
-        Assert.assertEquals(expectedOutput, jobString);
+        assertEquals(expectedOutput, jobString);
     }
 }
